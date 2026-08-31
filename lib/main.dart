@@ -1,3 +1,5 @@
+import 'package:device_lab/src/presentation/device_info_screen.dart';
+import 'package:device_lab/src/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,8 +11,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
+    return MaterialApp(
+      home: const HomeScreen(),
+      routes: {'device_info': (_) => const DeviceInfoScreen()},
     );
   }
 }
