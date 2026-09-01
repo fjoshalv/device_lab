@@ -25,17 +25,17 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
           children: <Widget>[
             FilledButton(
               onPressed: () async {
-                final result = await DeviceInfoApi().ping();
+                final result = await DeviceInfoApi().getBatteryInfo();
                 setState(() {
-                  nativeMessage = result;
+                  nativeMessage = '$result%';
                 });
               },
-              child: const Text('Ping Android'),
+              child: const Text('Get device info'),
             ),
             const SizedBox(
               height: 30,
             ),
-            Text('Native Answer: $nativeMessage'),
+            Text('Battery Level: $nativeMessage'),
           ],
         ),
       ),
