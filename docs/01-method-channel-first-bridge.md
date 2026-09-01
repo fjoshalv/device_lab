@@ -144,3 +144,16 @@ Answer from memory; verify by experiment or the mental-model section. If any ans
 
 - Platform channels (the one official page to read fully): https://docs.flutter.dev/platform-integration/platform-channels
 - When stuck, study: `battery_plus` source on pub.dev.
+
+## Questions on the fly
+
+1. What other binary messengers exist?
+2. What can it be done with a custom binary messenger?
+3. Which cases need a custom binary messenger?
+4. What other codecs are available and when to use them?
+5. Creation of custom codecs
+6. Does the method channel name follows the standard convention? When should it be named differently?
+7. How to test?
+
+## Notes
+- When using scenes, use the didInitializeImplicitFlutterEngine instead of accessing the root controller in the didFinishLaunchingWithOptions delegate 

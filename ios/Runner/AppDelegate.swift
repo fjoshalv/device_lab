@@ -9,8 +9,24 @@ import UIKit
   ) -> Bool {
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
-
-  func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
-    GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
-  }
+    
+    func didInitializeImplicitFlutterEngine(_ engineBridge: FlutterImplicitEngineBridge) {
+        GeneratedPluginRegistrant.register(with: engineBridge.pluginRegistry)
+        
+        let channel = FlutterMethodChannel(
+            name: "devicelab/device_info",
+            binaryMessenger: engineBridge.applicationRegistrar.messenger()
+        )
+        
+        channel.setMethodCallHandler {call, result in
+            switch call.method {
+            case "ping":
+              result("pong from native iOS")
+            default:
+              result(FlutterMethodNotImplemented)
+            }
+            
+        }
+    }
+    
 }
