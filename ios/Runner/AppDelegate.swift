@@ -22,6 +22,8 @@ import UIKit
             switch call.method {
             case "getBatteryLevel":
                 self?.getBatteryLevel(result: result)
+            case "getDeviceInfo":
+                result(self?.getDeviceInfo())
             default:
               result(FlutterMethodNotImplemented)
             }
@@ -40,6 +42,14 @@ import UIKit
         
         result(Int(device.batteryLevel * 100))
         
+    }
+    
+    func getDeviceInfo() -> Dictionary<String, String> {
+        [
+            "model" : UIDevice.current.model,
+            "systemName" : UIDevice.current.systemName,
+            "systemVersion": UIDevice.current.systemVersion
+        ]
     }
     
 }

@@ -6,6 +6,7 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.BatteryManager
+import android.os.Build
 import android.os.Build.VERSION_CODES
 import android.os.Build.VERSION
 import io.flutter.embedding.android.FlutterActivity
@@ -22,6 +23,8 @@ class MainActivity : FlutterActivity() {
         ).setMethodCallHandler { call, result ->
             when (call.method) {
                 "getBatteryLevel" -> result.success(getBatteryLevel())
+                "getDeviceInfo" -> result.success(getDeviceInfo())
+                else -> result.notImplemented()
             }
 
         }
@@ -48,5 +51,13 @@ class MainActivity : FlutterActivity() {
         }
 
         return batteryLevel
+    }
+
+    fun getDeviceInfo() : Map<String, String> {
+        return mapOf(
+            "model" to Build.MODEL,
+            "manufacturer" to Build.MANUFACTURER,
+            "osVersion" to Build.VERSION.RELEASE
+        )
     }
 }

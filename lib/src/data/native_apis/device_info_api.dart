@@ -6,4 +6,8 @@ class DeviceInfoApi {
   Future<int> getBatteryInfo() async {
     return (await _ch.invokeMethod<int>('getBatteryLevel'))!;
   }
+
+  Future<Map<String, String>> getDeviceInfo() async {
+    return (await _ch.invokeMapMethod<String, String>('getDeviceInfo'))!;
+  }
 }

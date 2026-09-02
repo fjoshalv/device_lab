@@ -25,9 +25,12 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
           children: <Widget>[
             FilledButton(
               onPressed: () async {
-                final result = await DeviceInfoApi().getBatteryInfo();
+                final deviceInfoApi = DeviceInfoApi();
+                final batteryLevelResult = await deviceInfoApi.getBatteryInfo();
+                final deviceInfoResult = await deviceInfoApi.getDeviceInfo();
+
                 setState(() {
-                  nativeMessage = '$result%';
+                  nativeMessage = '$batteryLevelResult%\n$deviceInfoResult';
                 });
               },
               child: const Text('Get device info'),
