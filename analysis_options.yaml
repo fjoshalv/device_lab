@@ -4,6 +4,7 @@ analyzer:
   errors: 
     public_member_api_docs: ignore
     require_trailing_commas: warning
+    avoid_catches_without_on_clauses: ignore
   exclude:
     - build/**
     - android/**
